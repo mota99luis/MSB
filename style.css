@@ -1,0 +1,287 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: rgb(59, 57, 57);
+    --font-color: #FFF;
+    --header-background:#CA5491;
+    --need-of-golang-background: #FF6D8A;
+    --intro-background:#FF9CBA;
+    --learning-background:#0E4295;
+    --gopher-scroll-background:#F6DE89;
+    --local-setup-background:#9ED47E;
+    --attribute-background:#E9963A;
+    --hover-background:#A1C9F1;
+    --hover-font-color:#000;
+}
+
+body {
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 16px;
+    color:var(--font-color);
+    background-color:var(--background-color);
+}
+
+.grid-container {
+    inline-size: 90vw;
+    height: 90vh;
+    margin: 20px auto;
+    display:grid;
+    grid-template-columns: 1fr 1.618fr 1fr 1fr;
+    grid-template-rows: repeat(5,minmax(150px,1fr)) 80px;
+    grid-auto-rows: auto;
+    grid-gap:5px;
+    grid-template-areas:
+    "header header header header"
+    "needgolang needgolang needgolang needgolang"
+    "introarea introarea introarea introarea"
+    "learningresources learningresources  learningresources learningresources"
+    "localsetup localsetup attribution attribution"
+    "gopher gopher gopher gopher"
+    ;
+}
+
+[class^="item-"] {
+    display: flex;
+    transition: all 1s;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+[class^="item-"]:hover {
+    background-color: var(--hover-background);
+    color:var(--hover-font-color);
+    cursor: pointer;
+}
+
+
+.item-header {
+    background-color: var(--header-background);
+    grid-area: header;
+}
+
+.heading {
+    font-size: 1.5rem;
+}
+
+
+.item-gopher-scroll {
+    background-color: var(--gopher-scroll-background);
+    grid-area: gopher;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.item-gopher-scroll::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
+}
+
+.gophers {
+    margin-right:0.3rem;
+    margin-left:0.3rem;
+    width: 100%;
+}
+
+.gophers:nth-child(odd) {
+    margin-top:1rem;
+}
+
+.gophers:nth-child(even) {
+    margin-top: 0.4rem;
+}
+
+
+.item-introduction {
+    background-color: var(--intro-background);
+    grid-area: introarea;
+}
+
+.item-needofgolang {
+    background-color: var(--need-of-golang-background);
+    grid-area: needgolang;
+}
+
+.item-local-setup {
+    background-color: var(--local-setup-background);
+    grid-area: localsetup;
+}
+
+.item-learning-resources {
+    background-color: var(--learning-background);
+    grid-area: learningresources;
+}
+.item-attribution {
+    background-color: var(--attribute-background);
+    grid-area: attribution;
+}
+
+.modal-background {
+    /* Uncomment after developing content for tabs */
+    display:none; 
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.507);
+}
+
+.modal-body {
+    overflow-y: scroll;
+    background-color: var(--background-color);
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 15px;
+    z-index:3;
+}
+
+.modal-title {
+    background-color: #444;
+    top:1rem;
+    position:sticky;
+    position: -webkit-sticky;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    margin: 10px 10px 0 10px;
+    border-radius:4px;
+}
+
+.modal-title > .modal-title-text {
+    width: calc(100% - 55px);
+    line-height: 1.9;
+    padding-left: 5px;
+    background-color: #333;
+}
+
+.modal-title > .modal-close {
+    font-size: 2.1rem;
+    background-color:#e83f3f;
+    width:30px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 0.9;
+    cursor: pointer;
+}
+
+.modal-content {
+    margin: 20px 10px 10px 10px;
+    color:var(--font-color);
+    overflow-y: scroll;
+    height: 80%;
+    scrollbar-width:none;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 0px;
+}
+
+.modal-content * {
+    /* border:0.1px solid wheat; */
+    text-align: justify;
+}
+
+.modal-content > div {
+    /* uncomment later */
+    display: none;
+}
+
+.modal-content div.show-modal-content {
+    display: block;
+}
+
+.modal-content section,
+.modal-content p,
+.modal-content ul
+ {
+    margin:10px 0;
+}
+
+ul {
+    padding:0 1.2rem;
+}
+
+ul li {
+    margin:5px 0;
+}
+
+ul.code-intro
+{
+    list-style:none;
+}
+
+a {
+    color : var(--font-color) !important;
+}
+
+.attr-images {
+    width: 90%;
+    height: 90%;
+}
+
+pre {
+    background-color:rgb(38, 107, 68);
+    overflow: scroll;
+    width: 100%;
+}
+
+.attr-images img {
+    width: 30%;
+}
+
+.show-modal {
+    display:block;
+}
+
+@media screen and (min-width: 667px) {
+    .grid-container {
+        grid-template-columns: 1fr 1.618fr 1fr min-content;
+        grid-template-areas:
+        "header header header header"
+        "needgolang introarea introarea gopher"
+        "needgolang introarea introarea gopher"
+        "localsetup learningresources  attribution gopher"
+        "localsetup learningresources attribution gopher"
+        ;
+    }
+    .item-needofgolang,.item-attribution,.item-local-setup {
+        text-align: center;
+    }
+
+    .item-gopher-scroll {
+        background-color: var(--gopher-scroll-background);
+        grid-area: gopher;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scrollbar-width: none;
+        height: auto;
+        overflow-x: unset;
+    }
+
+    .gophers {
+        width: 60px;
+        margin: 0.3rem auto;
+    }
+
+    .modal-body {
+        height: 95vh;
+    }
+}
